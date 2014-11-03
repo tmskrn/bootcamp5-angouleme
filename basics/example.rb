@@ -51,3 +51,9 @@ class Article
   likes + dislikes
  end
 end
+
+class ArticlesFileSystem
+ def initialize(dir)
+  @dir = dir
+ end
+end
