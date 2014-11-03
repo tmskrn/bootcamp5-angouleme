@@ -11,7 +11,7 @@ class Article
 
  def long_lines 
   lines = []
-  body.line.each do |l|
+  body.lines.each do |l|
    lines << l unless l.length < 80
   end
   lines
@@ -22,7 +22,17 @@ class Article
  end
 
  def truncate(limit)
-  #@body.skroc unless length < limit  
+  if length > limit  
+   cut = length - limit
+   @body = @body[0...-cut-3] << "..."
+  else
+   @body 
+  end
+  
+ end
+
+ def contain?(pattern)
+  body.match(pattern) ? true : false 
  end
 
  def like!
@@ -34,10 +44,10 @@ class Article
  end
 
  def points
-  self.likes - self.dislikes
+  likes - dislikes
  end
 
  def votes
-  self.likes + self.dislikes
+  likes + dislikes
  end
 end
