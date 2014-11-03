@@ -10,7 +10,7 @@ class Article
  end
 
  def long_lines 
-  long_lines = body.lines.select!{|line| line.length > 80}
+  body.lines.select!{|line| line.length > 80}
  end
 
  def length
@@ -28,7 +28,7 @@ class Article
  end
 
  def contain?(pattern)
-  body.match(pattern) ? true : false 
+  !!body.match(pattern)
  end
 
  def like!
