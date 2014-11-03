@@ -7,6 +7,22 @@ class Article
   @dislikes = 0
  end
 
+ def like!
+  @likes += 1
+ end
+
+ def dislike!
+  @dislikes += 1
+ end
+
+ def points
+  @likes - @dislikes
+ end
+
+ def votes
+  @likes + @dislikes
+ end
+
  def title
   @title
  end
