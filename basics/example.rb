@@ -53,7 +53,19 @@ class Article
 end
 
 class ArticlesFileSystem
+ attr_reader :dir
+
  def initialize(dir)
   @dir = dir
  end
+
+ def save(articles)
+  articles.each do |article|
+   path = dir + '/' + article.title.gsub(/\s/, '_').downcase + '.article'
+   file = File.open( path,"w")
+   file.write(article.author + '||' + article.likes.to_s + '||' + article.dislikes.to_s + '||' + article.body)
+   file.close 
+  end
+ end
+ 
 end
