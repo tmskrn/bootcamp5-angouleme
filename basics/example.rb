@@ -10,11 +10,7 @@ class Article
  end
 
  def long_lines 
-  lines = []
-  body.lines.each do |l|
-   lines << l unless l.length < 80
-  end
-  lines
+  long_lines = body.lines.select!{|line| line.length > 80}
  end
 
  def length
