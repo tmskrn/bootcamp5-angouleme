@@ -115,19 +115,13 @@ class WebPage
  end
  
  def best_article
-  unless @articles.empty?
-   @articles.max_by{|article| article.points}
-  else
-   raise WebPage::NoArticlesFound
-  end
+  raise WebPage::NoArticlesFound unless @articles.any?
+  @articles.max_by{|article| article.points}
  end
 
  def worst_article
-  unless @articles.empty?
-   @articles.max_by{|article| article.dislikes}
-  else
-   raise WebPage::NoArticlesFound
-  end
+  raise WebPage::NoArticlesFound unless @articles.any?
+  @articles.max_by{|article| article.dislikes}
  end
 
  def most_controversial_articles
