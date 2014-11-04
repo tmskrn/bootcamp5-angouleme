@@ -1,3 +1,5 @@
+require 'pry'
+
 class Article
  attr_accessor :likes, :dislikes
  attr_reader :title, :body, :author, :created_at
@@ -69,12 +71,40 @@ class ArticlesFileSystem
   articles = []
   list.each do |file|
    title, extension = file.chomp.split(".") 
+   #title = Pathname.new(file).basename('.article') 
    author, likes, dislikes, body =  File.open(dir + '/' + file).read.chomp.split('||')
    a = Article.new(title.gsub('_',' ').capitalize, body, author) 
    a.likes, a.dislikes = likes.to_i, dislikes.to_i
    articles << a
   end
   articles
+ end 
+end
+
+class WebPage
+ attr_reader :dir
+
+ def initialize(dir = '/') 
+  @dir = dir 
+  @articles = []
+ end
+
+ def articles
+  @articles
+ end
+
+ def load 
+  @articles = ArticlesFileSystem.new(dir).load
+ end
+
+ def save(articles)
+  ArticlesFileSystem.new(dir).save(articles)
  end
  
+ def new_article(title, body, author)
+   new_article = Article.new(title, body, author)
+   articles << new_article
+   new_article
+ end
+
 end
