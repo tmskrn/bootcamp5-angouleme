@@ -129,24 +129,16 @@ class WebPage
  end
 
  def votes
-  v = 0 
-  @articles.each do |a|
-   v += a.votes
-  end
-  v
+  @articles.map{|article| article.votes}.inject(0,&:+)
+  #@articles.map{|article| article.votes}.inject(0) {|result, element| result + element}
  end
 
  def authors
-  authors = []
-  @articles.each do |article|
-   authors << article.author unless authors.include?(article.author)
-  end
-  authors
+  @articles.map{|article| article.author}.uniq
  end
 
  def authors_statistics
-  h = {}
-  self.authors.map{|a| h[a] = 0}
+  h = Hash.new(0)
   articles.each do |a|
    h[a.author] += 1
   end
