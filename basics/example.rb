@@ -71,7 +71,7 @@ class ArticlesFileSystem
   list.map do |file|
    title, extension = file.split(".") 
    #title = Pathname.new(file).basename('.article') 
-   author, likes, dislikes, body =  File.open(dir + '/' + file).read.chomp.split('||')
+   author, likes, dislikes, body =  File.open(dir + '/' + file).read.split('||')
    a = Article.new(title.gsub('_',' ').capitalize, body, author) 
    a.likes, a.dislikes = likes.to_i, dislikes.to_i
    a
@@ -153,7 +153,7 @@ class WebPage
  def authors_statistics
   h = {}
   self.authors.map{|a| h[a] = 0}
-  @articles.each do |a|
+  articles.each do |a|
    h[a.author] += 1
   end
   h
@@ -161,6 +161,10 @@ class WebPage
  
  def best_author
   self.authors_statistics.max_by{|k,v| v}.first
+ end
+
+ def search(query)
+  articles.map{|article| article if article.contain?(query)}
  end
 end
 
