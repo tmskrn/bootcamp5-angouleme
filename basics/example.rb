@@ -70,7 +70,7 @@ class ArticlesFileSystem
   list = Dir.entries(dir).select!{|article| article.include?(".article")} 
   articles = []
   list.each do |file|
-   title, extension = file.chomp.split(".") 
+   title, extension = file.split(".") 
    #title = Pathname.new(file).basename('.article') 
    author, likes, dislikes, body =  File.open(dir + '/' + file).read.chomp.split('||')
    a = Article.new(title.gsub('_',' ').capitalize, body, author) 
