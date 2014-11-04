@@ -22,7 +22,7 @@ class Article
  def truncate(limit)
   if length > limit  
    cut = length - limit
-   @body[0...-cut-3] << "..."
+   @body[0...-cut-3] + "..."
   else
    @body 
   end
@@ -136,5 +136,6 @@ class WebPage
   @articles.sort_by{|article| article.votes}.reverse
  end
 end
- class NoArticlesFound < StandardError
- end
+
+class NoArticlesFound < StandardError
+end
