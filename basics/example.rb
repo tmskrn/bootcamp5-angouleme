@@ -150,7 +150,7 @@ class WebPage
  end
 
  def search(query)
-  articles.select{|article| article if article.contain?(query)}
+  articles.select{|article| article.contain?(query)}
  end
 end
 
