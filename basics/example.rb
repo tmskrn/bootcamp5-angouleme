@@ -133,6 +133,35 @@ class WebPage
  def most_controversial_articles
   @articles.sort_by{|article| article.votes}.reverse
  end
+
+ def votes
+  v = 0 
+  @articles.each do |a|
+   v += a.votes
+  end
+  v
+ end
+
+ def authors
+  authors = []
+  @articles.each do |article|
+   authors << article.author unless authors.include?(article.author)
+  end
+  authors
+ end
+
+ def authors_statistics
+  h = {}
+  self.authors.map{|a| h[a] = 0}
+  @articles.each do |a|
+   h[a.author] += 1
+  end
+  h
+ end
+ 
+ def best_author
+  self.authors_statistics.max_by{|k,v| v}.first
+ end
 end
 
 class NoArticlesFound < StandardError
