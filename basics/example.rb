@@ -12,7 +12,7 @@ class Article
  end
 
  def long_lines 
-  body.lines.select!{|line| line.length > 80}
+  body.lines.select{|line| line.length > 80}
  end
 
  def length
@@ -22,7 +22,7 @@ class Article
  def truncate(limit)
   if length > limit  
    cut = length - limit
-   @body = @body[0...-cut-3] << "..."
+   @body[0...-cut-3] << "..."
   else
    @body 
   end
