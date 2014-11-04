@@ -68,16 +68,14 @@ class ArticlesFileSystem
 
  def load
   list = Dir.entries(dir).select!{|article| article.include?(".article")} 
-  articles = []
-  list.each do |file|
+  list.map do |file|
    title, extension = file.split(".") 
    #title = Pathname.new(file).basename('.article') 
    author, likes, dislikes, body =  File.open(dir + '/' + file).read.chomp.split('||')
    a = Article.new(title.gsub('_',' ').capitalize, body, author) 
    a.likes, a.dislikes = likes.to_i, dislikes.to_i
-   articles << a
+   a
   end
-  articles
  end 
 end
 
