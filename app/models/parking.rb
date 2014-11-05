@@ -6,6 +6,6 @@ class Parking < ActiveRecord::Base
 
   validates :places, presence: true
   validates :hour_price, presence: true, numericality: true
-  validates :day_price, numericality: true
+  validates :day_price,  presence: true, numericality: true
   validates :kind, inclusion: {in: w%(outdoor indoor private or street)}
 end
