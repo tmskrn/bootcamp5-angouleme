@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+wroclaw:
+  city: Wroclaw
+  street: Swidnicka
+  zip_code: 50-950
+
+sulkowice:
+  city: Sulkowice
+  street: Tysiaclecia
+  zip_code: 32-440
