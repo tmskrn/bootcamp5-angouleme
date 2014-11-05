@@ -1,0 +1,16 @@
+
+wroclaw:
+  kind:       private
+  hour_price: 45.67
+  day_price:  200.10
+  places:     45
+  address: wroclaw
+  owner:   billy
+
+sulkowice:
+  kind:       public
+  hour_price: 4.00
+  day_price:  20.00
+  places:     200
+  address: sulkowice
+  owner:   billy

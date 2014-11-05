@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 bmw:
-  registration_number: MyString
-  model: MyString
-  owner_id: 1
+  registration_number: asdf
+  model: bmw
+  owner: steve
 
 porsche:
-  registration_number: MyString
-  model: MyString
-  owner_id: 1
+  registration_number: abc123
+  model: porche
+  owner: steve
