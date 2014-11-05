@@ -1,6 +1,6 @@
 class Address < ActiveRecord::Base
-  has_one :address
+  has_one :parking
 
-  validates_uniqueness_of :city, :street, :zip_code
+  validates :city, :street, :zip_code, presence: true  
   validates :zip_code, format: {with: /\A[0-9]{2}-[0-9]{3}\z/}
 end
