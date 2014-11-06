@@ -1,6 +1,6 @@
 <ul>
  <% @parkings.each do |parking| %>
-  <li><%= parking.address.city %>, <%= link_to 'show' %>, <%= link_to 'edit' %>, <%= link_to 'delete' %>
+  <li><%= parking.address.city %>, <%= link_to('show', parking)%>, <%= link_to 'edit' %>, <%= link_to 'delete' %>
    <ul>
     <li>Places: <%= parking.places%> </li>
     <li>Day price: <%= parking.day_price%></li>

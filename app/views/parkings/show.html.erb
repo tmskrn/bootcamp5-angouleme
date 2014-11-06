@@ -1,0 +1,8 @@
+<ul>
+ <li>Address: <%= @parking.address.zip_code %> <%= @parking.address.city %>, ul. <%= @parking.address.street %></li>
+ <li>Places: <%= @parking.places %></li>
+ <li>Day price:  <%= @parking.day_price %></li>
+ <li>Hour price: <%= @parking.hour_price %></li>
+</ul>
+
+<p><%= link_to 'back', parkings_path %></p>
