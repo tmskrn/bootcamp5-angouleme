@@ -1,0 +1,21 @@
+<div>
+ <%= form_for @parking do |f| %>
+  <div>
+   <%= f.label :kind %>
+   <%= f.select(:kind, [[:outdoor], [:indoor], [:private], [:street]]) %>
+  </div>
+  <div>
+   <%= f.label :hour_price %>
+   <%= f.text_field :hour_price %>
+  </div>
+  <div>
+   <%= f.label :day_price %>
+   <%= f.text_field :day_price %>
+  </div>
+  <div>
+   <%= f.label :places %>
+   <%= f.number_field(:places,min: 0) %>
+  </div>
+  <%= f.submit 'go!' %>
+ <% end %>
+</div>
