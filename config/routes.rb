@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'place_rents/index' => 'place_rents#index', as: 'place_rents'
+
+  get 'place_rents/:id' =>  'place_rents#show', as: 'place_rent'
+
   resources :parkings
   resources :cars
   
