@@ -34,6 +34,12 @@ class ParkingsController < ApplicationController
    render 'edit'
   end 
  end
+
+ def destroy
+  @parking = Parking.find(params[:id])
+  @parking.destroy
+  redirect_to parkings_url
+ end
  
  private
  def parking_params
