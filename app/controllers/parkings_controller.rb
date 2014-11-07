@@ -21,6 +21,19 @@ class ParkingsController < ApplicationController
    render 'new'
   end 
  end
+
+ def edit
+  @parking = Parking.find(params[:id]) 
+ end
+
+ def update
+  @parking = Parking.find(params[:id])
+  if @parking.update(parking_params)
+   redirect_to parking_path(@parking)
+  else
+   render 'edit'
+  end 
+ end
  
  private
  def parking_params
