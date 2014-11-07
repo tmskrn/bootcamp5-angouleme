@@ -1,21 +1,39 @@
 <div>
  <%= form_for @parking do |f| %>
-  <div>
-   <%= f.label :kind %>
-   <%= f.select(:kind, [[:outdoor], [:indoor], [:private], [:street]]) %>
-  </div>
-  <div>
-   <%= f.label :hour_price %>
-   <%= f.text_field :hour_price %>
-  </div>
-  <div>
-   <%= f.label :day_price %>
-   <%= f.text_field :day_price %>
-  </div>
-  <div>
-   <%= f.label :places %>
-   <%= f.number_field(:places,min: 0) %>
-  </div>
+  <fieldset>
+   <div>
+    <%= f.label :kind %>
+    <%= f.select(:kind, [[:outdoor], [:indoor], [:private], [:street]]) %>
+   </div>
+   <div>
+    <%= f.label :hour_price %>
+    <%= f.text_field :hour_price %>
+   </div>
+   <div>
+    <%= f.label :day_price %>
+    <%= f.text_field :day_price %>
+   </div>
+   <div>
+    <%= f.label :places %>
+    <%= f.number_field(:places,min: 0) %>
+   </div>
+  </fieldset>
+  <fieldset>
+   <%= f.fields_for :address do |a| %>
+    <div>
+     <%= a.label :city %>
+     <%= a.text_field :city%>
+    </div>
+    <div>
+     <%= a.label :street %>
+     <%= a.text_field :street %>
+    </div>
+    <div>
+     <%= a.label :zip_code %>
+     <%= a.text_field :zip_code %>
+    </div>
+   <% end %>
+  </fieldset>
   <%= f.submit 'go!' %>
  <% end %>
 </div>

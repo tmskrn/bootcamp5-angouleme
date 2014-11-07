@@ -10,6 +10,7 @@ class ParkingsController < ApplicationController
 
  def new
   @parking = Parking.new()
+  @parking.build_address
  end
  
  def create
@@ -24,6 +25,7 @@ class ParkingsController < ApplicationController
 
  def edit
   @parking = Parking.find(params[:id]) 
+  @parking.build_address unless @parking.address.present?
  end
 
  def update
@@ -43,6 +45,7 @@ class ParkingsController < ApplicationController
  
  private
  def parking_params
-  params.require(:parking).permit(:kind, :hour_price, :day_price, :places, :owner_id, :address_id)
+  params.require(:parking).permit(:kind, :hour_price, :day_price, :places, :owner_id, :address_id, 
+                                  :address_attributes => [:city, :street, :zip_code])
  end
 end

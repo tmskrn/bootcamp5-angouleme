@@ -8,4 +8,6 @@ class Parking < ActiveRecord::Base
   validates :hour_price, presence: true, numericality: true
   validates :day_price,  presence: true, numericality: true
   validates :kind, inclusion: {in: %w(outdoor indoor private or street)}
+
+  accepts_nested_attributes_for :address
 end
