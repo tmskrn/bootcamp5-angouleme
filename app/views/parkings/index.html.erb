@@ -1,6 +1,9 @@
 <ul>
  <% @parkings.each do |parking| %>
-  <li><%= parking.address.city if parking.address.present? %>, <%= link_to('show', parking)%>, <%= link_to 'edit' %>, <%= link_to 'delete' %>
+  <li><%= parking.address.city if parking.address.present? %>, 
+      <%= link_to('show', parking)%>, 
+      <%= link_to 'edit', edit_parking_path(parking) %>, 
+      <%= link_to 'delete' %>
    <ul>
     <li>Places: <%= parking.places %> </li>
     <li>Day price: <%= parking.day_price %></li>
