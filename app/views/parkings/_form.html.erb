@@ -1,9 +1,19 @@
 <div>
  <%= form_for @parking do |f| %>
+  <div>
+   <% if @parking.errors.any? %>
+    <p>Sorry, parking can't be saved due to following errors:</p>
+    <ul>
+     <% @parking.errors.full_messages.each do |m| %>
+      <li><%= m %></li>
+     <% end %>
+    </ul>
+   <% end %> 
+  </div>
   <fieldset>
    <div>
     <%= f.label :kind %>
-    <%= f.select :kind, %w(outdoor indoor private street) %>
+    <%= f.select :kind, %w(outdoor indoor private street), include_blank: true %>
    </div>
    <div>
     <%= f.label :hour_price %>
