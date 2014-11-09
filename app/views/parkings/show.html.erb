@@ -1,8 +1,6 @@
 <ul>
  <li>Address:
-  <% if @parking.address.present? %> 
-   <%= @parking.address.zip_code %> <%= @parking.address.city %>, ul. <%= @parking.address.street %>
-  <% end %>
+  <%= "#{@parking.address.zip_code}, #{@parking.address.city}, street: #{@parking.address.street}" if @parking.address %>
  </li>
  <li>Places: <%= @parking.places %></li>
  <li>Day price:  <%= @parking.day_price %></li>
