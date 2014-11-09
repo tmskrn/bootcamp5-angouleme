@@ -1,3 +1,4 @@
+<p><%= link_to 'create new parking', new_parking_path %></p>
 <ul>
  <% @parkings.each do |parking| %>
   <li><%= parking.address.city if parking.address.present? %>, 
@@ -8,7 +9,9 @@
     <li>Places: <%= parking.places %> </li>
     <li>Day price: <%= parking.day_price %></li>
     <li>Hour price: <%= parking.hour_price %></li>
+    <li><%= link_to 'rent place', new_parking_place_rent_path(parking) %></li>
    </ul>
  </li>
  <% end %>
 </ul>
+

@@ -3,7 +3,7 @@
   <fieldset>
    <div>
     <%= f.label :kind %>
-    <%= f.select(:kind, [[:outdoor], [:indoor], [:private], [:street]]) %>
+    <%= f.select :kind, %w(outdoor indoor private street) %>
    </div>
    <div>
     <%= f.label :hour_price %>

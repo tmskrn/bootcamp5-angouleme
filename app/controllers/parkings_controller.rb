@@ -17,7 +17,7 @@ class ParkingsController < ApplicationController
   @parking = Parking.new(parking_params)
   
   if @parking.save
-   redirect_to parking_path(@parking)
+   redirect_to @parking
   else
    render 'new'
   end 
@@ -31,7 +31,7 @@ class ParkingsController < ApplicationController
  def update
   @parking = Parking.find(params[:id])
   if @parking.update(parking_params)
-   redirect_to parking_path(@parking)
+   redirect_to @parking
   else
    render 'edit'
   end 
@@ -45,7 +45,7 @@ class ParkingsController < ApplicationController
  
  private
  def parking_params
-  params.require(:parking).permit(:kind, :hour_price, :day_price, :places, :owner_id, :address_id, 
+  params.require(:parking).permit(:kind, :hour_price, :day_price, :places, :owner, :address, 
                                   :address_attributes => [:city, :street, :zip_code])
  end
 end
