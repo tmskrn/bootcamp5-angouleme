@@ -3,8 +3,12 @@ Rails.application.routes.draw do
 
   get 'place_rents/:id' =>  'place_rents#show', as: 'place_rent'
 
-  resources :parkings
+  resources :parkings do
+   resources :place_rents, only: [:new, :create]
+  end
   resources :cars
+
+  root 'parkings#index'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

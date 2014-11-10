@@ -1,4 +1,9 @@
+<h1>Car details</h1>
 <ul>
  <li><%= @car.model %></li>
  <li><%= @car.registration_number %></li>
+ <li><%= link_to 'Edit', edit_car_path(@car)%></li>
+ <li><%= link_to 'Delete', @car, method: :delete, data: {confirm: 'Are sure you want to delete this car?'} %></li>
 </ul>
+
+<p><%= link_to 'Back to the list', cars_path %></p>

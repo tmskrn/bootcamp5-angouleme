@@ -1,59 +1,49 @@
 class CarsController < ApplicationController
- #before_filter :check_owner, only: [:edit, :update, :show]
 
- def index
-  @cars = current_person.cars 
- end
-
- def show 
-  @car = Car.find(params[:id])
-  is_owner?(@car)
- end
-
- def new 
-  @car = Car.new()
- end
-
- def create
-  @car = Car.new(car_params)
-  @car.owner = current_person
-  if @car.save
-   redirect_to car_path(@car)
-  else
-   render 'new'
+  def index
+    @cars = current_person.cars 
   end
- end
- 
- def edit
-  @car = Car.find(params[:id])
-  is_owner?(@car)
- end
 
- def update
-  @car = Car.find(params[:id])
-  is_owner?(@car) 
-  if @car.update(car_params)
-   redirect_to car_path(@car)
-  else
-   render 'edit'
+  def show 
+    @car = current_person.cars.find(params[:id])
   end
- end
 
- def delete
-  @car = Car.find(params[:id])
-  is_owner?(@car)
-  @car.destroy
-  redirect_to cars_url
- end
+  def new 
+    @car = Car.new
+  end
 
- private
+  def create
+    @car = current_person.cars.new(car_params)
+    if @car.save
+      redirect_to @car, notice: "New car was succesfully created."
+    else
+      render 'new', alert: "Sorry, something went wrong, please try again."
+    end
+  end
  
- def car_params
-  params.require(:car).permit(:model, :registration_number, :owner_id)
- end
+  def edit
+    @car = current_person.cars.find(params[:id])
+  end
 
- def is_owner?(car)
-  redirect_to cars_path, notice: "u don't have permission to do that!" unless @car.owner_id == current_person.id
- end
+  def update
+    @car = current_person.cars.find(params[:id])
+    if @car.update(car_params)
+      redirect_to @car, notice: "Car was succesfully updated."
+    else
+      render 'edit', alert: "Sorry, something went wrong, please try again."
+    end
+  end
+
+  def destroy
+    @car = current_person.cars.find(params[:id])
+    @car.destroy
+    redirect_to cars_url, notice: "Car was deleted."
+  end
+
+  private
+ 
+  def car_params
+    params.require(:car).permit(:model, :registration_number, :owner_id)
+  end
 
 end

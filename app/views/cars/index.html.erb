@@ -1,5 +1,6 @@
 <div>
- <p>All cars</p>
+ <h1><%= "Here are all your cars, mr/ms #{current_person.last_name} " %></h2>
+ <p><%= link_to 'add new car', new_car_path %></p>
  <ul>
   <% @cars.each do |car| %>
    <ul>
