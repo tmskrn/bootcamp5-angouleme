@@ -1,0 +1,16 @@
+<%= form_for @place_rent, url: :place_rents do |f| %>
+ <div>
+  <%= f.label :start_date %>
+  <%= f.date_select :start_date %>
+ </div>
+ <div>
+  <%= f.label :end_date %>
+  <%= f.date_select :end_date %>
+ </div>
+ <div>
+  <%= f.label :car %>
+  <%= f.collection_select :car_id, @cars, :id, :registration_number  %>
+ </div>
+ <%= f.hidden_field :parking_id %>
+ <%= f.submit 'go' %>
+<% end %>

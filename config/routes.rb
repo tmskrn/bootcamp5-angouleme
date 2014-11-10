@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :place_rents, only: [:index, :show]
+  resources :place_rents 
 
   resources :parkings do
    resources :place_rents, only: [:new, :create]
