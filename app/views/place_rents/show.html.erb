@@ -1,4 +1,5 @@
-
+<h1>Place rent details</h1>
 <p>From: <%= @rent.start_date.strftime('%d/%m/%Y') %> to <%= @rent.end_date.strftime('%d/%m/%Y') %></p>
+<p><%= "Car: model - #{@rent.car.model}, registration number - #{@rent.car.registration_number}, owner: #{@rent.car.owner.full_name}" %></p> 
 
 <p><%= link_to 'all place rents', place_rents_path %></p>
