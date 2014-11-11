@@ -38,6 +38,8 @@ gem 'spring',        group: :development
 gem 'rack-utf8_sanitizer'
 
 gem 'capybara'
+
+gem 'launchy'
 #gem 'rspec-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
