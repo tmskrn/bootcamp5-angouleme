@@ -10,7 +10,6 @@ class PlaceRentsController < ApplicationController
   def new
     @place_rent = PlaceRent.new
     @place_rent.parking = Parking.find(params[:parking_id])
-    @cars = current_person.cars
   end
 
   def create

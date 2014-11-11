@@ -9,7 +9,7 @@
  </div>
  <div>
   <%= f.label :car %>
-  <%= f.collection_select :car_id, @cars, :id, :registration_number  %>
+  <%= f.collection_select :car_id, current_person.cars, :id, :registration_number  %>
  </div>
  <%= f.hidden_field :parking_id %>
  <%= f.submit 'go' %>
