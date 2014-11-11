@@ -1,7 +1,5 @@
 require 'test_helper'
 require 'capybara/rails'
-#require 'spec_helper'
-#require 'integration_test_helper'
 
 class ParkingsTest < ActionDispatch::IntegrationTest
 
@@ -67,6 +65,5 @@ class ParkingsTest < ActionDispatch::IntegrationTest
     click_link 'delete', :href => parking_path(Parking.last)
  
     assert_equal current_url, parkings_url
-    
   end
 end

@@ -9,3 +9,13 @@ porsche:
   registration_number: abc123
   model: porche
   owner: steve
+
+toyota:
+  registration_number: abc345
+  model: yaris
+  owner: billy
+
+subaru:
+  registration_number: rgb567
+  model: impreza
+  owner: billy
