@@ -17,7 +17,7 @@ class ParkingsController < ApplicationController
     @parking = Parking.new(parking_params)
   
     if @parking.save
-      redirect_to @parking
+      redirect_to @parking, notice: "Successfully created new parking."
     else
       render 'new'
     end 
@@ -31,7 +31,7 @@ class ParkingsController < ApplicationController
   def update
     @parking = Parking.find(params[:id])
     if @parking.update(parking_params)
-      redirect_to @parking
+      redirect_to @parking, notice: "Parking was successfully updated."
     else
       render 'edit'
     end 
