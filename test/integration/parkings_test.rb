@@ -24,8 +24,10 @@ class ParkingsTest < ActionDispatch::IntegrationTest
     select("indoor", from: "Kind")
     fill_in("City", with: "Krakow")
     fill_in("Street", with: "Mogilska")
-    fill_in("Zip code", with: "23231")
+    fill_in("Zip code", with: "23-231")
     click_button('go!')
+
+    save_and_open_page
 
     assert_equal current_url, parking_url(Parking.last)
     assert has_content? "Successfully created new parking."
