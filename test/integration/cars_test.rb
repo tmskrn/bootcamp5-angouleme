@@ -18,7 +18,17 @@ class CarsTest < ActionDispatch::IntegrationTest
     assert has_content? "some model"
   end
 
-  test "user displays one of his cars" do
+  test "user edits one of their cars" do
+    visit '/cars'
+    first('ul').first('ul').find_link('edit').click
+    fill_in("Model", with: "fiat uno")
+    click_button('go')
+    assert has_content? "Car was succesfully updated."
+    assert has_content? "fiat uno"
+    assert_not has_content? "bmw"
+  end
+
+  test "user displays one of their cars" do
     visit '/cars'
     assert has_content? "Here are all your cars"
     first('ul').first('ul').find_link('show').click
@@ -26,12 +36,11 @@ class CarsTest < ActionDispatch::IntegrationTest
     assert has_content? "yaris" 
   end
 
-  test "user deletes one of his cars" do
+  test "user deletes one of their cars" do
     visit '/cars'
     assert has_content?  "Here are all your cars"
     first('ul').first('ul').find_link('delete').click
     assert_equal current_path, '/cars'
-    save_and_open_page
     assert_not has_content? 'yaris' 
   end
   
