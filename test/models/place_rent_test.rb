@@ -28,8 +28,6 @@ class PlaceRentTest < ActiveSupport::TestCase
   test "should calculate total price when created" do
     place_rent = PlaceRent.create(start_date: Time.now, end_date: Time.now.advance(:days => 2, :hours => 4),  parking: parkings(:wroclaw), car: cars(:porsche))
 
-    assert place_rent.valid?
-    #assert_equal "Wroclaw", place_rent.parking.address.city
     assert_equal 55.4, place_rent.price.to_f   
   end
 end
