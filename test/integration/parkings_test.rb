@@ -9,13 +9,14 @@ class ParkingsTest < ActionDispatch::IntegrationTest
   end
 
   test "user opens parking details" do
-    parking = Parking.first
-    visit parking_path(parking)
+    visit '/parkings'
+    click_link 'show', :href => parking_path(parking = Parking.last)
     assert has_content? 'Parking details'
     assert has_content? "Places: #{parking.places}"
   end
 
   test "user successfully adds a new parking" do
+    visit parkings_path
     click_link 'create new parking'
 
     fill_in("Hour price", with: 345.67)
@@ -26,9 +27,6 @@ class ParkingsTest < ActionDispatch::IntegrationTest
     fill_in("Street", with: "Mogilska")
     fill_in("Zip code", with: "23-231")
     click_button('go!')
-
-    save_and_open_page
-
     assert_equal current_url, parking_url(Parking.last)
     assert has_content? "Successfully created new parking."
     assert has_content? "Hour price: #{Parking.last.hour_price}"   
@@ -64,8 +62,9 @@ class ParkingsTest < ActionDispatch::IntegrationTest
 
   test "user removes a parking" do
     visit parkings_path
-    click_link 'delete', :href => parking_path(Parking.last)
+    click_link 'delete', :href => parking_path(parking = Parking.last)
  
     assert_equal current_url, parkings_url
+    assert_not has_content? "Places: #{parking.places}"
   end
 end
