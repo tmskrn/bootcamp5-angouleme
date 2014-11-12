@@ -7,11 +7,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-#config.middleware.insert 0, Rack::UTF8Sanitizer
-
 module B
   class Application < Rails::Application
-  config.middleware.insert 0, Rack::UTF8Sanitizer
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
