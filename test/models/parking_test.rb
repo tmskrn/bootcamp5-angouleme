@@ -65,8 +65,23 @@ class ParkingTest < ActiveSupport::TestCase
  end
 
  test "should scope private parkings" do
-   #test in progress
-   #assert_equal parkings(:wroclaw), Parking.private_parkings
+   assert_equal parkings(:wroclaw), Parking.private_parkings.first
+ end
+
+ test "should scope public parkings" do
+   assert_equal parkings(:sulkowice), Parking.public_parkings.first
+ end
+
+ test "should scope parkings with given hour price range" do
+   assert_equal parkings(:wroclaw), Parking.within_hour_price_range(1.10, 3.50).first
+ end
+
+ test "should scope parkings with given day price range" do
+   assert_equal parkings(:sulkowice), Parking.within_day_price_range(10, 21).first
+ end
+
+ test "should scope parkings in given city" do
+   assert_equal parkings(:wroclaw), Parking.city_parkings("Wroclaw").first
  end
 
 end

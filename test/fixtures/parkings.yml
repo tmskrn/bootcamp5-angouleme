@@ -7,7 +7,7 @@ wroclaw:
   owner:   billy
 
 sulkowice:
-  kind:       public
+  kind:       street
   hour_price: 4.00
   day_price:  20.00
   places:     200
