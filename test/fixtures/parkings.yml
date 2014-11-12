@@ -1,8 +1,8 @@
 
 wroclaw:
   kind:       private
-  hour_price: 45.67
-  day_price:  200.10
+  hour_price: 1.60
+  day_price:  24.50
   places:     45
   address: wroclaw
   owner:   billy
