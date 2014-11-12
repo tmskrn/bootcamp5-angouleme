@@ -9,14 +9,25 @@ class Parking < ActiveRecord::Base
   validates :places, presence: true
   validates :hour_price, presence: true, numericality: true
   validates :day_price,  presence: true, numericality: true
-  validates :kind, inclusion: {in: %w(outdoor indoor private or street)}
+  validates :kind, inclusion: {in: %w(outdoor indoor private street)}
 
   accepts_nested_attributes_for :address
 
+  scope :private_parkings, -> { where(kind: "private") }
+  scope :public_parkings, -> { where.not(kind: "private")}
+  scope :within_day_price_range, -> (min, max) { where("day_price between ? and ?", min, max )}
+  scope :within_hour_price_range, -> (min, max) { where("hour_price between ? and ?", min, max )}
+  scope :city_parkings, -> (city) { joins(:address).where("city = ?", city)  }
+
+  def city
+    self.address.city
+  end
+
   private
   def finish_all_place_rents
-    self.place_rents.each do |p|
-      p.finish_rent
+    self.place_rents.ongoing.each do |place_rent|
+      place_rent.finish_rent
     end
   end
+
 end

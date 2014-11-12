@@ -5,8 +5,11 @@ class PlaceRent < ActiveRecord::Base
 
   validates :start_date, :end_date, :parking, :car, presence: true
 
+  scope :ongoing, -> { where("end_date > ?", Time.now)  }
+
   def finish_rent
     self.end_date = Time.now.utc if end_date > Time.now.utc
+    self.save
   end
 
   def calc_price

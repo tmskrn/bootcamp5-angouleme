@@ -60,9 +60,13 @@ class ParkingTest < ActiveSupport::TestCase
  test "should close all place rents when parking is destroyed" do
    p = parkings(:wroclaw)
    p.destroy
-   p.place_rents.each do |a|
-     assert_equal Time.now.to_date, a.end_date.to_date
-   end
+   assert_equal Time.now.to_date, place_rents(:two).end_date.to_date
+   assert_equal Time.now.to_date, place_rents(:three).end_date.to_date
+ end
+
+ test "should scope private parkings" do
+   #test in progress
+   #assert_equal parkings(:wroclaw), Parking.private_parkings
  end
 
 end
