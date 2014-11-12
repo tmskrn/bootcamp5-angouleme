@@ -57,4 +57,12 @@ class ParkingTest < ActiveSupport::TestCase
   assert parking.errors[:hour_price].empty? 
  end
 
+ test "should close all place rents when parking is destroyed" do
+   p = parkings(:wroclaw)
+   p.destroy
+   p.place_rents.each do |a|
+     assert_equal Time.now.to_date, a.end_date.to_date
+   end
+ end
+
 end

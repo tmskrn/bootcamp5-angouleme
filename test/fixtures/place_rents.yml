@@ -2,14 +2,22 @@
 
 one:
   start_date: 2014-11-05 13:04:22
-  end_date: 2014-11-05 13:04:22
-  price: 9.99
+  end_date: 2014-11-25 13:04:22
+  price: nil
   parking: sulkowice 
   car: bmw 
 
 two:
   start_date: 2014-11-05 13:04:22
-  end_date: 2014-11-05 13:04:22
-  price: 9.99
+  end_date: 2014-11-15 13:04:22
+  price: nil
   parking: wroclaw 
   car: porsche
+
+three:
+  start_date: 2014-11-05 13:04:22
+  end_date: 2014-11-25 13:04:22
+  price: nil
+  parking: wroclaw
+  car: bmw
+

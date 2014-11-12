@@ -6,11 +6,10 @@ class PlaceRent < ActiveRecord::Base
   validates :start_date, :end_date, :parking, :car, presence: true
 
   def finish_rent
-    self.end_date = Time.now if end_date > Time.now
+    self.end_date = Time.now.utc if end_date > Time.now.utc
   end
 
   def calc_price
-    #self.price = 2
     self.price = days_rate + hours_rate   
   end
 
