@@ -32,7 +32,7 @@ class Parking < ActiveRecord::Base
 
     if params[:private_parking] == "1" && params[:public_parking].nil?
       parkings = parkings.private_parkings
-    elsif params[:private_parking].nil? and params[:public_parking] == "1"
+    elsif params[:private_parking].nil? && params[:public_parking] == "1"
       parkings = parkings.public_parkings
     end
     parkings
