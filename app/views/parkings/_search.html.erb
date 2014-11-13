@@ -5,7 +5,7 @@
    <span>Select parking kind:</span>
    <%= check_box_tag(:private_parking, "1", params[:private_parking] == "1" ? true : false) %>
    <%= label_tag(:private_parking, "private") %>
-   <%= check_box_tag(:public_parking, "2", params[:public_parking] == "2" ? true : false) %>
+   <%= check_box_tag(:public_parking, "1", params[:public_parking] == "2" ? true : false) %>
    <%= label_tag(:public_parking, "public") %>
   </div>
   <div>

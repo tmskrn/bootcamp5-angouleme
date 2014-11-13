@@ -19,8 +19,29 @@ class Parking < ActiveRecord::Base
   scope :within_hour_price_range, -> (min, max) { where("hour_price between ? and ?", min, max )}
   scope :city_parkings, -> (city) { joins(:address).where("city = ?", city)  }
 
-  def city
-    self.address.city
+  def self.search(params)
+    parkings = Parking.all
+    parkings = (params[:city_parkings] == "" or params[:city_parkings].nil?) ? parkings : parkings.city_parkings(params[:city_parkings])
+    if params[:day_price_from].present? and params[:day_price_to].present?
+     parkings = parkings.within_day_price_range(params[:day_price_from], params[:day_price_to])
+    else
+     parkings
+    end
+
+    if params[:hour_price_from].present? and params[:hour_price_to].present?
+      parkings = parkings.within_hour_price_range(params[:hour_price_from], params[:hour_price_to])
+    else
+      parkings
+    end
+
+    if params[:private_parking] == "1" and params[:public_parking].nil?
+      parkings = parkings.private_parkings
+    elsif params[:private_parking].nil? and params[:public_parking] == "1"
+      parkings = parkings.public_parkings
+    else
+      parkings
+    end
+    parkings
   end
 
   private
@@ -29,5 +50,4 @@ class Parking < ActiveRecord::Base
       place_rent.finish_rent
     end
   end
-
 end
