@@ -20,7 +20,7 @@ class CarsTest < ActionDispatch::IntegrationTest
 
   test "user edits one of their cars" do
     visit '/cars'
-    first('ul').first('ul').find_link('edit').click
+    first(:link, "edit").click
     fill_in("Model", with: "fiat uno")
     click_button('go')
     assert has_content? "Car was succesfully updated."
