@@ -1,0 +1,31 @@
+<h2>Search parkings</h2>
+<div class="search-box">
+ <%= form_tag parkings_path, method: 'get' do %>
+  <div>
+   <span>Select parking kind:</span>
+   <%= check_box_tag(:private_parking, "1", params[:private_parking] == "1" ? true : false) %>
+   <%= label_tag(:private_parking, "private") %>
+   <%= check_box_tag(:public_parking, "2", params[:public_parking] == "2" ? true : false) %>
+   <%= label_tag(:public_parking, "public") %>
+  </div>
+  <div>
+   <span>Day price range:</span>
+   <%= label_tag(:day_price_from, "from")%>
+   <%= text_field_tag(:day_price_from, params[:day_price_from]) %>
+   <%= label_tag(:day_price_to, "to") %>
+   <%= text_field_tag(:day_price_to, params[:day_price_to]) %>
+  </div>
+  <div>
+   <span>Hour price range:</span>
+   <%= label_tag(:hour_price_from, "from")%>
+   <%= text_field_tag(:hour_price_from, params[:hour_price_from]) %>
+   <%= label_tag(:hour_price_to, "to") %>
+   <%= text_field_tag(:hour_price_to, params[:hour_price_to]) %>
+  </div>
+  <div>
+   <%= label_tag(:city_parkings, "City")%>
+   <%= text_field_tag(:city_parkings, params[:city_parkings]) %>
+  </div>
+  <div><%= submit_tag("Search") %></div>
+ <% end %>
+</div>
