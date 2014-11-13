@@ -30,16 +30,14 @@ class CarsTest < ActionDispatch::IntegrationTest
 
   test "user displays one of their cars" do
     visit '/cars'
-    assert has_content? "Here are all your cars"
-    first('ul').first('ul').find_link('show').click
+    first(:link, "show").click
     assert has_content? "Car details"
     assert has_content? "yaris" 
   end
 
   test "user deletes one of their cars" do
     visit '/cars'
-    assert has_content?  "Here are all your cars"
-    first('ul').first('ul').find_link('delete').click
+    first(:link, "delete").click
     assert_equal current_path, '/cars'
     assert_not has_content? 'yaris' 
   end
