@@ -14,8 +14,8 @@
   <li><%= link_to 'place rents', place_rents_path %></li>
  </ul>
 </nav>
-<p class="notice"><%= flash[:notice] %></p>
-<p class="alert" ><%= flash[:alert]  %></p>
+
+<%= render 'partials/flash_message' %>
 <%= yield %>
 
 </body>
