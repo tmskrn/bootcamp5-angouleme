@@ -22,13 +22,13 @@ class SearchTest < ActionDispatch::IntegrationTest
     assert page.has_content? "Kind: private"
   end
 
-  test "search form doesn't find public parking in given city" do
+  test "search form finds public parking in given city" do
     visit '/parkings'
     check("public_parking")
-    fill_in("city_parkings", with: "Wroclaw")
+    fill_in("city_parkings", with: "Sulkowice")
     click_button('Search')
+    assert page.has_content? "Sulkowice"
     assert_not page.has_content? "Wroclaw"
-    assert_not page.has_content? "Sulkowice"
   end
 
   test "search form finds parkings with given day price" do
