@@ -21,3 +21,7 @@
 .alert {
  color: red;
 }
+
+nav ul li {
+ display: inline;
+}
