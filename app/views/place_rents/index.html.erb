@@ -4,7 +4,7 @@
   <li>
    From <%= r.start_date.strftime('%d/%m/%Y') %>
    to <%= r.end_date.strftime('%d/%m/%Y') %>, 
-      <% if r.car.owner == current_person %> <%= link_to 'car', car_path(r.car) %>, <% end %>
+      <%= link_to 'car', car_path(r.car) %>
       <%= link_to 'parking', parking_path(r.parking) %>
       <%= link_to 'show', place_rent_path(r.id) %>
   </li>
