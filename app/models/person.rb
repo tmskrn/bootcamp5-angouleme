@@ -5,6 +5,10 @@ class Person < ActiveRecord::Base
   validates :first_name, presence: true
 
   def full_name
-   first_name + ' ' + last_name
+   if last_name.present?
+     first_name + ' ' + last_name
+   else
+     first_name
+   end
   end
 end
