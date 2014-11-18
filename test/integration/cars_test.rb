@@ -25,7 +25,7 @@ class CarsTest < ActionDispatch::IntegrationTest
     click_button('go')
     assert has_content? "Car was succesfully updated."
     assert has_content? "fiat uno"
-    assert_not has_content? "bmw"
+    assert has_no_content? "bmw"
   end
 
   test "user displays one of their cars" do
@@ -39,7 +39,7 @@ class CarsTest < ActionDispatch::IntegrationTest
     visit '/cars'
     first(:link, "delete").click
     assert_equal current_path, '/cars'
-    assert_not has_content? 'yaris' 
+    assert has_no_content? 'yaris' 
   end
   
 end

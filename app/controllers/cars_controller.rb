@@ -1,12 +1,10 @@
 class CarsController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: :cars_redirect, only: :show
 
   def index
     @cars = current_person.cars 
   end
 
   def show
-    raise ActiveRecord::RecordNotFound, "No car found" unless Car.find(params[:id]).owner == current_person   
     @car = current_person.cars.find(params[:id])
   end
 
@@ -45,7 +43,7 @@ class CarsController < ApplicationController
   private
 
   def cars_redirect
-    redirect_to cars_url, alert: "You can't access this car, you're not it's owner."
+    redirect_to cars_url, alert: "You can't access this car, you're not its owner."
   end
  
   def car_params
