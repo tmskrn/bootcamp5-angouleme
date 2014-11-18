@@ -29,7 +29,7 @@ class ParkingsTest < ActionDispatch::IntegrationTest
     click_button('go!')
     assert_equal current_url, parking_url(Parking.last)
     assert has_content? "Successfully created new parking."
-    assert has_content? "Hour price: #{Parking.last.hour_price}"   
+    assert has_content? "Hour price: 345.67"   
   end
 
   test "user fails to add a new parking" do 

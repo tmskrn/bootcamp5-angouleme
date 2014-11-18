@@ -1,12 +1,12 @@
 class ParkingsController < ApplicationController
-  rescue_from ActiveRecord::RecordNotFound, with: :parkings_redirect, only: :show
+  #rescue_from ActiveRecord::RecordNotFound, with: :parkings_redirect, only: :show
 
   def index
     @parkings = Parking.search(params)
   end
 
   def show
-    raise ActiveRecord::RecordNotFound, "No parking found" unless Parking.find(params[:id]).present?
+    #raise ActiveRecord::RecordNotFound, "No parking found"
     @parking = Parking.find(params[:id])
   end
 

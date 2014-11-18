@@ -3,4 +3,5 @@ class Car < ActiveRecord::Base
   has_many :place_rents
 
   validates :owner, :model, :registration_number, presence: true
+
 end
