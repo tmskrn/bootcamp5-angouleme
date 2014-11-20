@@ -1,11 +1,15 @@
 class CarsController < ApplicationController
 
   def index
-    @cars = current_person.cars 
+    @cars = current_person.cars
   end
 
   def show
+    raise ActiveRecord::RecordNotFound unless Car.find(params[:id]).owner == current_person 
     @car = current_person.cars.find(params[:id])
+
+    rescue 
+      cars_redirect
   end
 
   def new 
