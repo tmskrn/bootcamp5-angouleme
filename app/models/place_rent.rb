@@ -8,7 +8,7 @@ class PlaceRent < ActiveRecord::Base
   scope :ongoing, -> { where("end_date > ?", Time.now)  }
 
   def finish_rent
-    self.end_date = Time.now.utc if end_date > Time.now.utc
+    self.end_date = Time.now.utc if end_date.to_date > Time.now.utc
     self.save
   end
 
