@@ -13,7 +13,7 @@ porsche:
 toyota:
   registration_number: abc345
   model: yaris
-  owner: billy
+  owner: magda
 
 subaru:
   registration_number: rgb567

@@ -14,7 +14,9 @@
     <li>Places: <%= parking.places %> </li>
     <li>Day price: <%= parking.day_price %></li>
     <li>Hour price: <%= parking.hour_price %></li>
-    <li><%= link_to 'rent place', new_parking_place_rent_path(parking) %></li>
+    <% if user_logged_in? %>
+     <li><%= link_to 'rent place', new_parking_place_rent_path(parking) %></li> 
+    <% end %>
    </ul>
  </li>
  <% end %>

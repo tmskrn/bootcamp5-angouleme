@@ -2,6 +2,14 @@ require 'test_helper'
 require 'capybara/rails'
 
 class CarsTest < ActionDispatch::IntegrationTest
+
+  def setup
+    visit '/session/new'
+    fill_in("email", with: "mmgumularz@gmail.com")
+    click_button('Sign in')
+    #or maybe simply do this: session[:current_user_id] = people(:magda).id ? -> taken from fixtures
+  end
+
   test "user displays list of their cars" do
     visit cars_path
     assert has_content? "Here are all your cars" 

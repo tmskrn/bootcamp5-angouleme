@@ -2,6 +2,12 @@ require 'test_helper'
 require 'capybara/rails'
 
 class PlaceRentsTest < ActionDispatch::IntegrationTest
+ def setup
+   visit '/session/new'
+   fill_in("email", with: "mmgumularz@gmail.com")
+   click_button('Sign in')
+ end
+
  test "user creates new place rent" do
   visit parkings_path
   click_link 'rent place', href: new_parking_place_rent_path(Parking.first)

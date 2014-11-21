@@ -1,4 +1,5 @@
 class CarsController < ApplicationController
+  before_filter :authenticate
 
   def index
     @cars = current_person.cars
