@@ -14,8 +14,7 @@
   <li><%= link_to 'place rents', place_rents_path %></li>
  </ul>
 </nav>
-
-<p><%= "Hello, mr/ms #{current_person.full_name}" %></p>
+<p><%= "Hello, mr/ms #{current_person.full_name}" unless current_person.blank? %></p>
 <%= render 'partials/flash_message' %>
 <%= yield %>
 

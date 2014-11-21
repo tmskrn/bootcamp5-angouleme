@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
 
   private
   def current_person
-   Person.first
+   Account.find(session[:current_user_id]).person unless session[:current_user_id].blank?
   end
 end
