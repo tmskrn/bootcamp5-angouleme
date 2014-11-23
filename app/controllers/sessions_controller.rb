@@ -6,4 +6,9 @@ class SessionsController < ApplicationController
     session[:current_user_id] = Account.find_by_email(params[:email]).id
     redirect_to root_url
   end
+
+  def destroy
+    session.destroy
+    redirect_to root_url, notice: 'You have logged out.'
+  end
 end

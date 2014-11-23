@@ -7,18 +7,32 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<nav>
- <ul>
- <% if user_logged_in? %>  
-  <li><%= link_to 'cars', cars_path %></li>
-  <li><%= link_to 'place rents', place_rents_path %></li>
- <% end %>
-  <li><%= link_to 'parkings', parkings_path %></li>
- </ul>
-</nav>
-<p><%= "Hello, mr/ms #{current_person.full_name}" unless current_person.blank? %></p>
-<%= render 'partials/flash_message' %>
-<%= yield %>
-
+ <div class="navigation">
+  <nav>
+   <ul>
+    <% if user_logged_in? %>  
+     <li><%= link_to 'cars', cars_path %></li>
+     <li><%= link_to 'place rents', place_rents_path %></li>
+    <% end %>
+    <li><%= link_to 'parkings', parkings_path %></li>
+   </ul>
+  </nav>
+  <div id="user_panel">
+   <% if user_logged_in? %>
+    <span><%= "Hello, mr/ms #{current_person.full_name}" unless current_person.blank? %>.</span>
+    <ul>
+      <li><%= link_to 'log out', session_path, method: 'delete' %></li>
+    </ul>
+   <% else %>
+    <ul>
+      <li><%= link_to 'log in', new_session_path %></li>
+    </ul>
+   <% end %>
+  </div>
+ </div>
+ <div id="middle">
+  <%= render 'partials/flash_message' %>
+  <%= yield %>
+ </div>
 </body>
 </html>

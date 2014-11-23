@@ -22,6 +22,48 @@
  color: red;
 }
 
+div.navigation {
+  width: 100%;
+  height: 30px;
+ }
+
+nav {
+ float: left; 
+ margin-left: 20px;
+ width: 50%;
+}
+
+nav ul, ul li {
+ margin: 0;
+ padding: 0;
+}
+
 nav ul li {
  display: inline;
+}
+
+#user_panel {
+ float: right;
+ width: 40%;
+}
+
+#user_panel ul li {
+ display: inline;
+ margin: 0;
+ padding: 0;
+}
+
+#user_panel ul {
+ margin: 0;
+ padding: 0;
+}
+
+#user_panel span {
+ float: left;
+ margin-right: 10px;
+}
+
+.middle {
+ margin-top: 10px;
+ clear: both;
 }
