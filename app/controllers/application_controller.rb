@@ -7,14 +7,14 @@ class ApplicationController < ActionController::Base
 
   private
   def current_person
-   Account.find(session[:current_user_id]).person unless session[:current_user_id].blank?
+   Account.find(session[:current_account_id]).person unless session[:current_account_id].blank?
   end
 
   def authenticate
-    redirect_to new_session_path, alert: "You must be logged in to see this page." if session[:current_user_id].blank?
+    redirect_to new_session_path, alert: "You must be logged in to see this page." if session[:current_account_id].blank?
   end
 
   def user_logged_in?
-    !!session[:current_user_id].present?
+    !!session[:current_account_id].present?
   end
 end
