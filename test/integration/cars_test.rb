@@ -7,7 +7,6 @@ class CarsTest < ActionDispatch::IntegrationTest
     visit '/session/new'
     fill_in("email", with: "mmgumularz@gmail.com")
     click_button('Sign in')
-    #or maybe simply do this: session[:current_user_id] = people(:magda).id ? -> taken from fixtures
   end
 
   test "user displays list of their cars" do
