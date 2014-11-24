@@ -1,16 +1,13 @@
 class CarsController < ApplicationController
   before_filter :authenticate
+  rescue_from ActiveRecord::RecordNotFound, with: :cars_redirect
 
   def index
     @cars = current_person.cars
   end
 
-  def show
-    raise ActiveRecord::RecordNotFound unless Car.find(params[:id]).owner == current_person 
+  def show 
     @car = current_person.cars.find(params[:id])
-
-    rescue 
-      cars_redirect
   end
 
   def new 
