@@ -2,11 +2,36 @@ require 'test_helper'
 require 'capybara/rails'
 
 class LoginTest < ActionDispatch::IntegrationTest
-  test 'user successfully logs in' do
-    visit 'session/new'
+  def login
     fill_in('email', with: "mmgumularz@gmail.com")
     fill_in('password', with: "abc123")
     click_button('Sign in')
+  end
+
+  test 'user successfully logs in' do
+    visit 'session/new'
+    login
     assert has_content?("Magdalena")
+  end
+
+  test 'user gets redirected to root page after loging in straight from login page' do
+    visit 'session/new'
+    login
+    assert_equal root_url, current_url
+  end
+
+  test 'user gets forced to log in and gets redirected to previous location after' do
+    visit '/cars'
+    assert_equal current_url, new_session_url
+    login
+    assert_equal cars_url, current_url
+  end
+
+  test 'user gets redirected to previous location after clicking login link somewhere on the website' do
+    visit '/parkings'
+    click_link('log in')
+    assert_equal new_session_url, current_url
+    login
+    assert_equal parkings_url, current_url
   end
 end
