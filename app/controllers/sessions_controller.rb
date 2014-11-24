@@ -3,8 +3,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-    session[:current_account_id] = Account.find_by_email(params[:email]).id
-    redirect_to root_url
+    account = Account.authenticate(params[:email], params[:password])
+
+    if account.nil?
+      flash.now.alert = 'Invalid email or password. Please try again.'
+      render 'new'
+    else  
+      session[:current_account_id] = account.id
+      redirect_to root_url, notice: 'You have successfully logged in.'
+    end
   end
 
   def destroy

@@ -2,4 +2,5 @@
 
 magda:
   email: mmgumularz@gmail.com
+  password_digest: <%=  BCrypt::Password.create('abc123') %>
   person: magda 
