@@ -27,11 +27,4 @@ class LoginTest < ActionDispatch::IntegrationTest
     assert_equal cars_url, current_url
   end
 
-  test 'user gets redirected to previous location after clicking login link somewhere on the website' do
-    visit '/parkings'
-    click_link('log in')
-    assert_equal new_session_url, current_url
-    login
-    assert_equal parkings_url, current_url
-  end
 end
