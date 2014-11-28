@@ -9,13 +9,13 @@ class LoginTest < ActionDispatch::IntegrationTest
   end
 
   test 'user successfully logs in' do
-    visit 'session/new'
+    visit '/login'
     login
     assert has_content?("Magdalena")
   end
 
   test 'user gets redirected to root page after loging in straight from login page' do
-    visit 'session/new'
+    visit '/login'
     login
     assert_equal root_url, current_url
   end

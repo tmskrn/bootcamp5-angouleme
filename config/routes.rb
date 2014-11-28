@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'accounts/new'
-
-  get 'accounts/create'
+  get '/register', to: "accounts#new", as: :registration
+  get '/login', to: "sessions#new", as: :login
 
   resource  :session
   resources :place_rents 

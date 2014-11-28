@@ -3,7 +3,7 @@ require 'capybara/rails'
 
 class RegistrationTest < ActionDispatch::IntegrationTest
   def setup
-    visit '/accounts/new' 
+    visit '/register' 
       fill_in("First name", with: "John")
       fill_in("Last name", with: "Smith")
       fill_in("Email", with: "johnsmith@gmail.com")
