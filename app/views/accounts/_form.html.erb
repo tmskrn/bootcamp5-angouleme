@@ -1,0 +1,43 @@
+<%= form_for @person_account, url: accounts_path do |f| %>
+   <div>
+     <% if @person_account.errors.any? %>
+       <p>Sorry, your account can't be saved due to following errors:</p>
+       <ul>
+         <% @person_account.errors.full_messages.each do |m| %>
+           <li><%= m %></li>
+         <% end %>
+       </ul>
+     <% end %>
+   </div>
+   <fieldset>
+     <div>
+       <%= f.label :first_name %>
+       <%= f.text_field :first_name %>
+     </div>
+     <div>
+       <%= f.label :last_name %>
+       <%= f.text_field :last_name %>
+     </div>
+    </fieldset>
+    <fieldset>
+      <%= f.fields_for :account do |a| %>  
+        <div>
+          <%= a.label :email %>
+          <%= a.text_field :email %>
+        </div>
+        <div>
+          <%= a.label :password %>
+          <%= a.password_field :password %>
+        </div>
+        <div>
+          <%= a.label :password_confirmation %>
+          <%= a.password_field :password_confirmation %>
+        </div>
+
+      <% end %>
+    </fieldset>
+
+  <%= f.submit %>
+
+<% end %>
+

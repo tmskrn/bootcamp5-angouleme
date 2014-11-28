@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
+  get 'accounts/new'
+
+  get 'accounts/create'
+
   resource  :session
   resources :place_rents 
+
+  resources 'accounts'
 
   resources :parkings do
    resources :place_rents, only: [:new, :create]

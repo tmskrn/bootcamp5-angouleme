@@ -1,0 +1,37 @@
+<%= form_for(@person_account) do |f| %>
+   <fieldset>
+     <div>
+       <%= f.label :email %>
+       <%= f.text_field :email %>
+     </div>
+     <div>
+       <%= f.label :password %>
+       <%= f.password_field :password %>
+     </div>
+     <div>
+       <%= f.label :password_confirmation %>
+       <%= f.password_field :password_confirmation %>
+     </div>
+    </fieldset>
+    <fieldset>
+      <%= f.fields_for :account do |a| %>  
+        <div>
+          <%= a.label :first_name %>
+          <%= a.text_field :first_name %>
+        </div>
+        <div>
+          <%= a.label :last_name %>
+          <%= a.text_field :last_name %>
+        </div>
+        <div>
+          <%= a.label :last_name %>
+          <%= a.text_field :last_name %>
+        </div>
+
+      <% end %>
+    </fieldset>
+
+  <%= f.submit %>
+
+<% end %>
+

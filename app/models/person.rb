@@ -5,6 +5,8 @@ class Person < ActiveRecord::Base
 
   validates :first_name, presence: true
 
+  accepts_nested_attributes_for :account
+
   def full_name
    if last_name.present?
      first_name + ' ' + last_name
