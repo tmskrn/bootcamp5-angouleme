@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   get '/login', to: "sessions#new", as: :login
 
   resource  :session
-  resources :place_rents 
+  resources :place_rents, except: :show
+  get '/place_rents/:identifier', to: 'place_rents#show', as: :show_place_rent
 
   resources 'accounts'
 

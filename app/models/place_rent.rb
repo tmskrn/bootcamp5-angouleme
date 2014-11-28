@@ -1,7 +1,7 @@
 class PlaceRent < ActiveRecord::Base
   belongs_to :car
   belongs_to :parking
-  before_save :calc_price
+  before_save :calc_price, :generate_identifier
 
   validates :start_date, :end_date, :parking, :car, presence: true
 
@@ -17,6 +17,10 @@ class PlaceRent < ActiveRecord::Base
   end
 
   private
+  def generate_identifier
+    self.identifier = rand(36**10).to_s(36)
+  end
+
   def days_rate
     ((end_date - start_date).to_i / 1.day ) * parking.day_price.to_f 
   end

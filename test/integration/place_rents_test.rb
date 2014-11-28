@@ -15,7 +15,7 @@ class PlaceRentsTest < ActionDispatch::IntegrationTest
     assert_equal current_url, new_parking_place_rent_url(Parking.first)
     select("yaris", from: "place_rent_car_id")
     click_button('go')
-    assert_equal current_url, place_rent_url(PlaceRent.last)
+    assert_equal current_url, show_place_rent_url(PlaceRent.last.identifier)
     assert has_content? "You've rented the place"
     assert has_content? "Car: model - yaris"
   end

@@ -6,6 +6,7 @@ one:
   price: 0
   parking: sulkowice 
   car: bmw 
+  identifier: r69q29rhsx
 
 two:
   start_date: 2014-11-05 13:04:22
@@ -13,6 +14,7 @@ two:
   price: 0
   parking: wroclaw 
   car: porsche
+  identifier: 4pgv52047s
 
 three:
   start_date: 2014-11-05 13:04:22
@@ -20,4 +22,5 @@ three:
   price: 0
   parking: wroclaw
   car: bmw
+  identifier: 4zm4uyqaul
 

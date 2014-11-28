@@ -6,7 +6,7 @@
    to <%= r.end_date.strftime('%d/%m/%Y') %>, 
       <%= link_to 'car', car_path(r.car) %>
       <%= link_to 'parking', parking_path(r.parking) %>
-      <%= link_to 'show', place_rent_path(r.id) %>
+      <%= link_to 'show', show_place_rent_path(r.identifier) %>
   </li>
  <% end %>
 </ul>

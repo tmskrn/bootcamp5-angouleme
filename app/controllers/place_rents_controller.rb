@@ -6,7 +6,7 @@ class PlaceRentsController < ApplicationController
   end
 
   def show
-    @rent = PlaceRent.find(params[:id])
+    @rent = PlaceRent.find_by_identifier(params[:identifier])
   end
 
   def new
@@ -18,7 +18,7 @@ class PlaceRentsController < ApplicationController
     @place_rent = PlaceRent.new(place_rent_params)
 
     if @place_rent.save
-      redirect_to @place_rent, notice: "You've rented the place." 
+      redirect_to show_place_rent_path(@place_rent.identifier), notice: "You've rented the place." 
     else
       redirect_to parkings , alert: "Sorry, something went wrong, please try again."
     end 
